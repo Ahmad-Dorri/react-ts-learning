@@ -1,10 +1,12 @@
-import TodoClass from '../models/todo';
+import { useSelector } from 'react-redux';
+import RootState from '../store/types';
 import TodoItem from './TodoItem';
 
-const Todo: React.FC<{ items: TodoClass[] }> = (props) => {
+const Todo: React.FC = () => {
+  const items = useSelector((state: RootState) => state.todo.items);
   return (
     <div>
-      {props.items.map((item) => (
+      {items.map((item) => (
         <TodoItem key={item.id} text={item.text} />
       ))}
     </div>
